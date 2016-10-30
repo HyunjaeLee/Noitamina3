@@ -1,7 +1,7 @@
 .thumbnail {
   position: relative;
   width: 120px;
-  height: 120px;
+  height: 80px;
   margin: 10px;
   overflow: hidden;
 }
@@ -13,11 +13,10 @@
   height: 100%;
   width: auto;
   -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
 }
 
-.thumbnail img.portrait {
-  width: 100%;
-  height: auto;
+.title {
+  font-size: 16px;
 }

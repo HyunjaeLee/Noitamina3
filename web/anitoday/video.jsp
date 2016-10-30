@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="anime.*"
-    %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.hyunjae.noitamina.Anitoday" %>
+<%@ page import="com.hyunjae.noitamina.Item" %>
 
 <!DOCTYPE html>
 <html>
@@ -17,10 +15,6 @@
 <link rel="stylesheet" href="css/header.css" type="text/css">
 
 <style type="text/css">
-
-	a:link {color: inherit; text-decoration: none;}
-	a:visited{color: black; text-decoration: none;}
-	a.index{color: white; text-decoration: none;}
 	
 	video {
 		width: 100%;
@@ -30,14 +24,11 @@
 </style>
 
 <%
-	String url = request.getParameter("url");/*
-	Item item = Anigod.video(url);
+	String url = request.getParameter("url");
+	Item item = Anitoday.video(url);
 	String title = item.getTitle();
 	String video = item.getUrl();
-	String poster = item.getSrc();*/
-	String title = "";
-	String video = Anitoday.video(url);
-	String poster = "";
+	String poster = item.getSrc();
 %>
 <title><%=title%></title>
 
@@ -46,7 +37,7 @@
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
 		<header class="mdl-layout__header">
 			<div class="mdl-layout__header-row">
-				<a href="index.html" class="index">
+				<a href="index.jsp" class="index">
 					<span class="mdl-layout__title">Noitamina</span>
 				</a>
 			<!-- Displayed on Computer and Tablet -->

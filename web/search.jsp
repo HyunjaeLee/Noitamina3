@@ -1,9 +1,7 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="java.util.*, anime.*"
-    %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.hyunjae.noitamina.Item" %>
 <%@ page import="com.hyunjae.noitamina.Anigod" %>
+<%@ page import="java.util.List" %>
 
 <%@taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core"%>
@@ -20,15 +18,11 @@
 <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-cyan.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Noto+Sans' type='text/css'>
-<link rel="stylesheet" href="css/header.css" type="text/css">
+<link rel="stylesheet" href="css/header.min.css" type="text/css">
 <link rel="stylesheet" href="css/thumbnail.css" type="text/css">
 
 <style type="text/css">
 
-	a:link {color: inherit; text-decoration: none;}
-	a:visited{color: black; text-decoration: none;}
-	a.index{color: white; text-decoration: none;}
-	
 	.mdl-grid {
 		margin: 10px;
 		height: 140px;
@@ -37,7 +31,7 @@
 	}
 	
 	.mdl-cell {
-		padding: 0px 10px 0px 5px;
+		padding: 0 10px 0 5px;
 	
 		display: flex;
 		display: -webkit-flex;
@@ -65,7 +59,7 @@
 	request.setAttribute("items", items);
 %>
 
-<title><%=keyword%></title>
+<title><%=keyword%> - Search</title>
 </head>
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">

@@ -25,26 +25,7 @@ public class Anitoday {
 
     }
 
-    private static List<Item> list(String url) {
-
-        Document doc = connect(url);
-        Elements elements = doc.select("a[href*=view]");
-        List<Item> items = new LinkedList<>();
-        elements.forEach(element -> {
-            Item item = new Item();
-            item.setTitle(element.attr("title"));
-            item.setUrl(element.attr("abs:href"));
-            items.add(item);
-        });
-        return items;
-
-    }
-
-    public static List<Item> now() {
-
-        Document doc = connect("http://ani.today");
-        Elements elements = doc.select(".enter-list-entity a[href]");
-
+    private static List<Item> getItems(Elements elements) {
         List<Item> items = new LinkedList<>();
         elements.forEach(element -> {
             Item item = new Item();
@@ -54,6 +35,21 @@ public class Anitoday {
             items.add(item);
         });
         return items;
+    }
+
+    private static List<Item> list(String url) {
+
+        Document doc = connect(url);
+        Elements elements = doc.select("a[href*=view]");
+        return getItems(elements);
+
+    }
+
+    public static List<Item> now() {
+
+        Document doc = connect("http://ani.today");
+        Elements elements = doc.select(".enter-list-entity a[href]");
+        return getItems(elements);
 
     }
 
@@ -72,14 +68,22 @@ public class Anitoday {
 
     public static List<Item> search(String keyword) {
 
+        String _keyword = encode(keyword);
         List<Item> items = new LinkedList<>();
         all().forEach(item -> {
-            if(item.getTitle().contains(keyword)){
+            String _title = encode(item.getTitle());
+            if(_title.contains(_keyword)){
                 items.add(item);
             }
         });
         return items;
 
+    }
+
+    private static String encode(String s) {
+        String _s = s.replace(" ", "");
+        _s = _s.toUpperCase();
+        return _s;
     }
 
     public static List<Item> all() {
@@ -92,11 +96,13 @@ public class Anitoday {
 
     }
 
-    public static String video(String url) {
+    public static Item video(String url) {
 
         Document doc = connect(url);
-        Element element = doc.select("source[src]").first();
-        return element.attr("abs:src");
+        String _title = doc.select("meta[property=og:title]").first().attr("content");
+        String _url = doc.select("source[src]").first().attr("src");
+        String _src =  doc.select("meta[property=og:image]").first().attr("content");
+        return new Item(_title, _url, _src);
 
     }
 

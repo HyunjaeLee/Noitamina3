@@ -14,9 +14,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/header.js"></script>
 <script src="js/thumbnail.js"></script>
-<link rel="stylesheet" href="css/header.css" type="text/css">
+<link rel="stylesheet" href="css/header.min.css" type="text/css">
 <link rel="stylesheet" href="css/thumbnail.css" type="text/css">
-<link rel="stylesheet" href="css/styles.css" type="text/css">
 <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-cyan.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -129,6 +128,7 @@
 			<span class="mdl-layout__title">Noitamina</span>
 			<nav class="mdl-navigation">
 				<a class="mdl-navigation__link" href="all.html">All</a>
+                <a class="mdl-navigation__link" href="anitoday/">Anitoday</a>
 			</nav>
 		</div>
 
@@ -139,7 +139,7 @@
                 <div class="page-content">
                     <c:forEach items="${entry.value}" var="item">
                     <a class="container<c:if test="${item.isNew()}"> new</c:if>" href="lists.jsp?title=${item.title}&url=${item.url}">
-                        <!--With ripple-effect
+                        <!--With ripple-effect -> Performance decrease
                         <section class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                         -->
                         <section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">

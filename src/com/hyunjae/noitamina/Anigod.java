@@ -51,20 +51,6 @@ public class Anigod {
 
     }
 
-    @Deprecated
-    public static List<Item> lists(String url) {
-
-        List<Item> items = new LinkedList<>();
-        List<Item> tempItems;
-        int page = 1;
-        while((tempItems = list(url + "/" + page)).size() != 0) {
-            items.addAll(tempItems);
-            page++;
-        }
-        return items;
-
-    }
-
     public static List<Item> search(String keyword) {
 
         String keywordEscaped = keyword.replace(" ", "%20");
@@ -75,7 +61,8 @@ public class Anigod {
     public static Map<String, List<Item>> now() {
 
         Document doc = connect("https://anigod.com/");
-        long currentTime = System.currentTimeMillis()/1000;
+        Elements elements = doc.select(".index-table-container");
+
         Map<String, List<Item>> map = new LinkedHashMap<>();
         map.put("Mon", new LinkedList<>());
         map.put("Tue", new LinkedList<>());
@@ -84,7 +71,9 @@ public class Anigod {
         map.put("Fri", new LinkedList<>());
         map.put("Sat", new LinkedList<>());
         map.put("Sun", new LinkedList<>());
-        Elements elements = doc.select(".index-table-container");
+
+        long currentTime = System.currentTimeMillis()/1000;
+
         int index = 0;
         for(List<Item> items : map.values()) {
             if(index > 6) break;
@@ -100,25 +89,17 @@ public class Anigod {
             });
             index++;
         }
+
         return map;
-    }
-
-    @Deprecated
-    public static List<Item> all() {
-
-    	//List<Item> items = now();
-        return lists("https://anigod.com/animations/finale/title/asc");
 
     }
 
     public static Item video(String url) {
 
-       Document doc = connect(url);
-        
-       Element element = doc.select("img[src]").first();
-       String title = element.attr("alt");
-       String src = element.attr("src");
-
+        Document doc = connect(url);
+        Element element = doc.select("img[src]").first();
+        String _title = element.attr("alt");
+        String _src = element.attr("src");
         String html = doc.outerHtml();
 
         String videoID = "";
@@ -139,7 +120,7 @@ public class Anigod {
 
         String _url = "https://anigod.com/video?id=" + videoIDEscaped + "&ts=" + System.currentTimeMillis();
 
-        return new Item(title, _url, src);
+        return new Item(_title, _url, _src);
         
     }
 

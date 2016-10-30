@@ -2,17 +2,13 @@
 <%@ page import="com.hyunjae.noitamina.Item" %>
 <%@ page import="com.hyunjae.noitamina.Anigod" %>
 <%@ page import="java.util.List" %>
-
-<%@taglib prefix="c"
-          uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     String p = request.getParameter("p");
     String url = request.getParameter("url");
     List<Item> items = Anigod.list(url + "/" + p);
     request.setAttribute("items", items);
 %>
-
 <c:if test="<%=!items.isEmpty()%>">
 <div class="page" id="<%=p%>">
 <div class="list big-list">

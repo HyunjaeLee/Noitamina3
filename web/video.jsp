@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="anime.*"
-    %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.hyunjae.noitamina.Item" %>
 <%@ page import="com.hyunjae.noitamina.Anigod" %>
 
@@ -15,19 +12,13 @@
 <script src="js/header.js"></script>
 <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue_grey-cyan.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="css/header.css" type="text/css">
+<link rel="stylesheet" href="css/header.min.css" type="text/css">
 
 <style type="text/css">
-
-	a:link {color: inherit; text-decoration: none;}
-	a:visited{color: black; text-decoration: none;}
-	a.index{color: white; text-decoration: none;}
-	
 	video {
 		width: 100%;
 		height: 100%;
 	}
-	
 </style>
 
 <%

@@ -1,11 +1,8 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="java.util.*, anime.*"
-    %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.hyunjae.noitamina.Anitoday" %>
 <%@ page import="com.hyunjae.noitamina.Item" %>
-<%@taglib prefix="c" 
-           uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.List" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
 	String url = request.getParameter("url");
