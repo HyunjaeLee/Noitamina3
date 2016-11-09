@@ -23,12 +23,6 @@
                 <source src="jsp/bigvideo.jsp?url=${item.url}" type="video/mp4">
             </video>
         </div>
-
-        <div class="mdl-card__actions mdl-card--border">
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="jsp/bigvideo.jsp?url=${item.url}" download="${item.title}.mp4">
-                Download
-            </a>
-        </div>
     </div>
     </c:forEach>
 </div>
